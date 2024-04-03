@@ -4,13 +4,11 @@ import {
   type MetaFunction,
 } from "@remix-run/cloudflare";
 import { Form, useLoaderData } from "@remix-run/react";
-import { drizzle } from "drizzle-orm/d1";
 import * as schema from "~/.server/schema";
 
 export async function loader({ context }: LoaderFunctionArgs) {
-  const { MY_KV, DB } = context.cloudflare.env;
-
-  const db = drizzle(DB, { schema });
+  const { MY_KV } = context.cloudflare.env;
+  const { db } = context;
 
   const users = await db.query.users.findMany();
 
@@ -33,8 +31,7 @@ export async function action({ request, context }: LoaderFunctionArgs) {
     await MY_KV.put("my-key", value);
     return json({ value });
   } else if (intent === "add_user") {
-    const { DB } = context.cloudflare.env;
-    const db = drizzle(DB, { schema });
+    const { db } = context;
     const name = formData.get("name");
     const email = formData.get("email");
     if (typeof name !== "string" || typeof email !== "string") {

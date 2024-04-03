@@ -1,4 +1,5 @@
 name = "remix-cloudflare-fun"
+compatibility-date = 2024-03-29
 
 [[kv_namespaces]]
 binding = "MY_KV"
