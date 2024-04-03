@@ -1,0 +1,6 @@
+name = "remix-cloudflare-fun"
+
+
+[[kv_namespaces]]
+binding = "MY_KV"
+id = "MY_KV"
