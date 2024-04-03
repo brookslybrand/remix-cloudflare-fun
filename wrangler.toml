@@ -1,6 +1,10 @@
 name = "remix-cloudflare-fun"
 
-
 [[kv_namespaces]]
 binding = "MY_KV"
 id = "MY_KV"
+
+[[ d1_databases ]]
+binding = "DB"
+database_name = "remix_fun_db"
+database_id = "7f07bf89-2399-4f90-a5c0-0f853c8ee501"
